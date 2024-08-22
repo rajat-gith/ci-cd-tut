@@ -12,7 +12,7 @@ Resources:
       CodeUri: functions/
       Timeout: 30
       MemorySize: 128
-      Role: $LAMBDA_EXECUTION_ROLE
+      Role: arn:aws:iam::116730820809:role/LambdaExecutionRole
       Environment:
         Variables:
-          API_URL: $API_URL
+          API_URL: https://jsonplaceholder.typicode.com/todos/1
