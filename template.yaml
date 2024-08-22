@@ -12,7 +12,7 @@ Resources:
       CodeUri: functions/
       Timeout: 30
       MemorySize: 128
-      Role: ${LAMBDA_EXECUTION_ROLE}
+      Role: $LAMBDA_EXECUTION_ROLE
       Environment:
         Variables:
-          API_URL: ${API_URL}
+          API_URL: $API_URL
