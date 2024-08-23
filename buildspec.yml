@@ -3,8 +3,6 @@ version: 0.2
 phases:
   build:
     commands:
-      - echo "ROLE_ARN: $LAMBDA_EXECUTION_ROLE"
-      - echo "API_URL: $API_URL"
       - sam package --template-file template.yaml --output-template-file packaged-template.yaml --s3-bucket $S3_BUCKET_NAME
       - sam deploy --template-file packaged-template.yaml --stack-name lambda-stack --capabilities CAPABILITY_IAM CAPABILITY_IAM_EXPANDED --parameter-overrides RoleArn=$LAMBDA_EXECUTION_ROLE ApiUrl=$API_URL --debug
 
