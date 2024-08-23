@@ -4,8 +4,6 @@ phases:
   build:
     commands:
       - sam package --template-file template.yaml --output-template-file packaged-template.yaml --s3-bucket $S3_BUCKET_NAME
-      - sam deploy --template-file packaged-template.yaml --stack-name lambda-stack --capabilities CAPABILITY_IAM --parameter-overrides LambdaExecutionRole=$LAMBDA_EXECUTION_ROLE ApiUrl=$API_URL --no-fail-on-empty-changeset
-
 artifacts:
   files:
     - packaged-template.yaml
