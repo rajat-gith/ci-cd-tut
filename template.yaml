@@ -2,14 +2,6 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Description: AWS SAM template to create a Lambda function with Python runtime.
 
-Parameters:
-  LambdaExecutionRole:
-    Type: String
-    Description: ARN of the Lambda execution role
-  ApiUrl:
-    Type: String
-    Description: URL of the API
-
 Resources:
   SampleLambdaFunction:
     Type: 'AWS::Serverless::Function'
@@ -20,7 +12,7 @@ Resources:
       CodeUri: functions/
       Timeout: 30
       MemorySize: 128
-      Role: !Ref LambdaExecutionRole
+      Role: $LAMBDA_EXECUTION_ROLE
       Environment:
         Variables:
-          API_URL: !Ref ApiUrl
+          API_URL: $API_URL
