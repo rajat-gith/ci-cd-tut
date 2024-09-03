@@ -1,30 +1,14 @@
-import os
-import requests
-
 def lambda_handler(event, context):
-    api_url = os.getenv('API_URL')
-
-    if not api_url:
-        return {
-            'statusCode': 500,
-            'body': 'Environment variables API_URL or API_KEY are not set.'
-        }
+    num1 = event.get('num1', 0)
+    num2 = event.get('num2', 0)
     
-    try:
-        response = requests.get(api_url)
-        if response.status_code == 200:
-            data = response.json()
-            return {
-                'statusCode': 200,
-                'body': data
-            }
-        else:
-            return {
-                'statusCode': response.status_code,
-                'body': f'Error: {response.text}'
-            }
-    except Exception as e:
-        return {
-            'statusCode': 500,
-            'body': f'Exception occurred: {str(e)}'
+    result = num1 + num2
+    
+    return {
+        'statusCode': 200,
+        'body': {
+            'num1': num1,
+            'num2': num2,
+            'result': result
         }
+    }
